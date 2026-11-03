@@ -1,4 +1,4 @@
-name: Build Windows release
+name: .github/workflows/build-windows-release.yml
 
 on:
   release:
