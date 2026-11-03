@@ -12,10 +12,11 @@ jobs:
   build-windows:
     runs-on: windows-latest
     steps:
-      - name: Get source code
+            - name: Get source code
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.release.tag_name || github.ref }}
+          ref: main
+          path: .
 
       - name: Set up Python
         uses: actions/setup-python@v5
