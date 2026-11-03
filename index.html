@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Forumnik 1.3</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">F</div>
+        <div>
+          <div class="brand-name">FORUMNIK</div>
+          <div class="brand-caption">RADМIR FORUM ASSISTANT</div>
+        </div>
+      </div>
+
+      <div class="side-label">РАБОЧЕЕ ПРОСТРАНСТВО</div>
+      <button class="nav-item active" id="nav-create" type="button">
+        <span class="nav-icon">＋</span>
+        <span>Создать жалобу</span>
+      </button>
+      <div class="side-note">
+        <span class="status-dot"></span>
+        <span>Локальная версия · 1.3</span>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="mini-line"></div>
+        <div class="sidebar-foot-title">FORUMNIK 1.3</div>
+        <div class="sidebar-foot-text">Другие типы заявлений и серверы появятся в следующих обновлениях.</div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="breadcrumb">Рабочее пространство <span>/</span> Новая жалоба</div>
+        <div class="top-right"><span class="local-badge"><i></i> Работает на этом ПК</span></div>
+      </header>
+
+      <section class="page-heading">
+        <div>
+          <div class="eyebrow">RADМIR · ФОРУМ</div>
+          <h1>Создание жалобы</h1>
+          <p>Заполни нужные поля — Forumnik соберёт текст, который останется проверить и отправить на форум.</p>
+        </div>
+        <div class="version-chip">V1.3 <span>·</span> 4 сервера</div>
+      </section>
+
+      <div class="workspace-grid">
+        <section class="form-column">
+          <div class="panel selection-panel">
+            <div class="section-head">
+              <div class="step-number">01</div>
+              <div>
+                <h2>Выбери сервер</h2>
+                <p>В этой версии доступны серверы 01–04.</p>
+              </div>
+            </div>
+            <div class="server-grid" id="server-grid">
+              <button class="server-card selected" data-server="1" type="button"><strong>01</strong><span>Сервер 01</span><i>✓</i></button>
+              <button class="server-card" data-server="2" type="button"><strong>02</strong><span>Сервер 02</span><i>✓</i></button>
+              <button class="server-card" data-server="3" type="button"><strong>03</strong><span>Сервер 03</span><i>✓</i></button>
+              <button class="server-card" data-server="4" type="button"><strong>04</strong><span>Сервер 04</span><i>✓</i></button>
+            </div>
+          </div>
+
+          <div class="quick-help-card">
+            <div class="quick-help-top">
+              <div class="quick-help-icon">?</div>
+              <div class="quick-help-copy"><strong>Не знаешь, что писать?</strong><span>Короткая инструкция для первого запуска</span></div>
+              <button type="button" class="help-toggle" id="help-toggle" aria-expanded="false">Как пользоваться?</button>
+            </div>
+            <div class="quick-help-content" id="quick-help">
+              <div><b>1. Выбери сервер и категорию.</b><span>У каждого сервера свои разделы и формы — шаблоны не смешиваются.</span></div>
+              <div><b>2. Заполни поля.</b><span>Пиши ники так, как они указаны в игре. В описании расскажи, что произошло и в чём нарушение.</span></div>
+              <div><b>3. Добавь доказательства.</b><span>Вставь ссылку на видео или скриншот. Открой её отдельно и проверь, что материалы доступны.</span></div>
+              <div><b>4. Сформируй и проверь жалобу.</b><span>Скопируй текст или сохрани его в TXT. Программа не отправляет жалобу на форум сама.</span></div>
+            </div>
+          </div>
+
+          <div class="panel category-panel">
+            <div class="section-head">
+              <div class="step-number">02</div>
+              <div>
+                <h2>Тип жалобы</h2>
+                <p>Список меняется в зависимости от выбранного сервера.</p>
+              </div>
+            </div>
+            <label class="field-label" for="category-select">Категория</label>
+            <select id="category-select" class="select-control"></select>
+            <div class="category-hint" id="category-hint">Выбери категорию, чтобы открыть нужные поля.</div>
+          </div>
+
+          <div class="panel details-panel">
+            <div class="section-head">
+              <div class="step-number">03</div>
+              <div>
+                <h2>Информация о жалобе</h2>
+                <p>Заполни информацию. Поля со звёздочкой обязательны.</p>
+              </div>
+            </div>
+            <form id="complaint-form" autocomplete="off" novalidate>
+              <div id="dynamic-fields" class="dynamic-fields"></div>
+              <div class="form-actions">
+                <div class="form-actions-left">
+                  <button type="button" class="secondary-button" id="reset-button">Очистить поля</button>
+                  <span class="draft-status" id="draft-status">Черновик будет сохраняться на этом ПК</span>
+                </div>
+                <button type="submit" class="primary-button">Сформировать жалобу <span>→</span></button>
+              </div>
+            </form>
+          </div>
+
+          <div class="soon-panel">
+            <div class="soon-icon">↗</div>
+            <div><strong>Больше возможностей — позже</strong><p>Заявления на вступление и другие типы обращений появятся в следующих версиях.</p></div>
+            <span class="soon-tag">СКОРО</span>
+          </div>
+        </section>
+
+        <aside class="output-column">
+          <div class="panel output-panel">
+            <div class="output-header">
+              <div>
+                <div class="eyebrow">РЕЗУЛЬТАТ</div>
+                <h2>Готовый текст</h2>
+              </div>
+              <div class="output-indicator"><i></i> Предпросмотр</div>
+            </div>
+            <div id="empty-state" class="empty-state">
+              <div class="empty-symbol">Aa</div>
+              <strong>Здесь появится жалоба</strong>
+              <p>Выбери категорию, заполни поля и нажми «Сформировать жалобу».</p>
+            </div>
+            <div id="result-wrap" class="result-wrap hidden">
+              <div class="result-meta"><span id="result-server">СЕРВЕР 01</span><span id="result-category">АДМИНИСТРАТОР</span></div>
+              <pre id="result-text"></pre>
+            </div>
+            <div class="output-footer">
+              <span id="output-status">Ожидает заполнения</span>
+              <div class="output-actions">
+                <button id="download-button" class="download-button" type="button" disabled>Скачать TXT</button>
+                <button id="copy-button" class="copy-button" type="button" disabled><span>▢</span> Скопировать</button>
+              </div>
+            </div>
+          </div>
+          <div class="tip-card">
+            <div class="tip-mark">i</div>
+            <div><strong>Перед отправкой</strong><p>Проверь никнеймы, ссылки и требования выбранного раздела форума. Программа помогает оформить текст, но не отправляет жалобу автоматически.</p></div>
+          </div>
+          <div class="privacy-note"><span class="lock-icon">⌑</span> Данные формы обрабатываются локально и не отправляются на сервер Forumnik.</div>
+        </aside>
+      </div>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
